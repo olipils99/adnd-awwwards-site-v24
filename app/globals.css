@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7fbf7;
+  --fg: #0b1a0f;
+  --muted: #3b7a4b;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: theme('fontFamily.body');
+}
+
+.gradient-radial {
+  background:
+    radial-gradient(800px 400px at 20% 10%, rgba(34,197,94,.18), transparent 60%),
+    radial-gradient(600px 300px at 80% 0%, rgba(16,185,129,.12), transparent 60%);
+}
+
+.card {
+  @apply rounded-2xl border border-black/10 bg-white shadow-lg;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor,currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .3s;
+}
+.link-underline:hover { background-size: 100% 2px; }
+
+/* Utility: hide scrollbars for horizontal project scroller */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
