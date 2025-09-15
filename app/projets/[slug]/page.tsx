@@ -16,9 +16,7 @@ export default function ProjectDetail({ params }: Params) {
   if (!proj) return notFound();
 
   const coverImg = proj.img ?? "/images/proj-1.jpg";
-  const gallery: string[] =
-    proj.gallery ??
-    Array.from({ length: 8 }, (_, i) => `/images/proj-${(i % 4) + 1}.jpg`);
+  const gallery: string[] = proj.gallery ?? [proj.img];
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-16">
@@ -56,9 +54,11 @@ export default function ProjectDetail({ params }: Params) {
         <aside className="card p-6">
           <h2 className="font-semibold">Détails</h2>
           <ul className="mt-3 list-disc list-inside text-gray-700 space-y-1">
-            <li>Budget: Sur mesure</li>
-            <li>Durée: 2-4 semaines</li>
-            <li>Matériaux: bois, pavé, plantations</li>
+            <li>Budget: {proj.details?.budget || "Sur mesure"}</li>
+            <li>Durée: {proj.details?.duration || "2-4 semaines"}</li>
+            <li>Matériaux: {proj.details?.materials?.join(", ") || "bois, pavé, plantations"}</li>
+            {proj.details?.location && <li>Localisation: {proj.details.location}</li>}
+            {proj.details?.year && <li>Année: {proj.details.year}</li>}
           </ul>
         </aside>
       </div>
@@ -74,7 +74,7 @@ export default function ProjectDetail({ params }: Params) {
           {gallery.map((src, i) => (
             <div
               key={i}
-              className="relative aspect-[16/10] overflow-hidden rounded-xl border border-black/10"
+              className="relative aspect-[16/10] overflow-hidden rounded-xl border border-black/10 group cursor-pointer hover:scale-105 transition-transform duration-200"
             >
               <Image
                 src={src}
@@ -82,7 +82,13 @@ export default function ProjectDetail({ params }: Params) {
                 fill
                 className="object-cover"
                 sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
+                loading={i < 4 ? "eager" : "lazy"}
+                priority={i < 4}
+                quality={85}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200" />
             </div>
           ))}
         </div>

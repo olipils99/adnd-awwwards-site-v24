@@ -1,27 +1,19 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import { SmoothScrollProvider } from "./providers";
 import dynamic from "next/dynamic";
+
+import ScrollToTopOnRouteChange from "../components/ScrollToTopOnRouteChange";
+import WipeCSS from "../components/WipeCSS"; // ⬅️ use CSS wipe
+
 const QuickDock = dynamic(() => import("../components/QuickDock"), {
   ssr: false,
 });
 
 export const metadata: Metadata = {
-  title: "ADND Paysagement — Aménagement paysager",
-  description:
-    "ADND conçoit et entretient des aménagements paysagers durables et chaleureux pour familles et entreprises au Québec.",
-  openGraph: {
-    title: "ADND Paysage",
-    description:
-      "Aménagement paysager haut de gamme • Conception, réalisation, entretien",
-    url: "https://adnd.example",
-    siteName: "ADND Paysage",
-    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
-    locale: "fr_CA",
-    type: "website",
-  },
-  metadataBase: new URL("https://example.com"),
+  /* … your metadata … */
 };
 
 export default function RootLayout({
@@ -30,8 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className="antialiased gradient-radial">
+    <html lang="fr" className="overflow-x-hidden">
+      <body className="min-h-screen antialiased gradient-radial">
+        <WipeCSS /> {/* green wipe (CSS-only) */}
+        <ScrollToTopOnRouteChange />
         <SmoothScrollProvider>
           <Navbar />
           {children}
@@ -41,4 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-

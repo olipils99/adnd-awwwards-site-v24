@@ -8,9 +8,12 @@
   --muted: #3b7a4b;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   height: 100%;
   background: var(--bg);
   color: var(--fg);
@@ -18,13 +21,22 @@ html, body {
 }
 
 body {
-  font-family: theme('fontFamily.body');
+  font-family: theme("fontFamily.body");
 }
 
+/* Optional radial background used on <body class="gradient-radial"> */
 .gradient-radial {
   background:
-    radial-gradient(800px 400px at 20% 10%, rgba(34,197,94,.18), transparent 60%),
-    radial-gradient(600px 300px at 80% 0%, rgba(16,185,129,.12), transparent 60%);
+    radial-gradient(
+      800px 400px at 20% 10%,
+      rgba(34, 197, 94, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      600px 300px at 80% 0%,
+      rgba(16, 185, 129, 0.12),
+      transparent 60%
+    );
 }
 
 .card {
@@ -32,14 +44,126 @@ body {
 }
 
 .link-underline {
-  background-image: linear-gradient(currentColor,currentColor);
+  background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
-  transition: background-size .3s;
+  transition: background-size 0.3s;
 }
-.link-underline:hover { background-size: 100% 2px; }
+.link-underline:hover {
+  background-size: 100% 2px;
+}
 
 /* Utility: hide scrollbars for horizontal project scroller */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===============================
+   Marquee (texte) — fiable et fluide
+   =============================== */
+.marquee {
+  --gap: 2.5rem; /* espace entre items */
+  --speed: 22s; /* vitesse (plus petit = plus rapide) */
+  display: flex;
+  gap: var(--gap);
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee var(--speed) linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+} /* pause au survol */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* nécessite duplication du contenu */
+}
+
+/* ===============================
+   Marquee (cartes) — pour témoignages
+   =============================== */
+.marquee-cards {
+  --gap: 1rem;
+  --speed: 35s;
+  overflow: hidden;
+  position: relative;
+}
+.marquee-track {
+  display: flex;
+  gap: var(--gap);
+  will-change: transform;
+  animation: marquee-cards var(--speed) linear infinite;
+}
+.marquee-cards:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-cards {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Cartes “glass” jolies */
+.card-glass {
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.7);
+}
+/* Petite ombre douce */
+.soft-shadow {
+  box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.25);
+}
+
+/* ===============================
+   PAGE WIPE (CSS-only) — clean left→right slide
+   Requires the <WipeCSS /> component
+   =============================== */
+#__wipe__.playing::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647; /* above everything */
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 185, 129, 1) 0%,
+    rgba(5, 150, 105, 1) 100%
+  );
+  transform: translate3d(-100%, 0, 0); /* start off-screen left */
+  animation: wipe-slide 520ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  will-change: transform;
+}
+@keyframes wipe-slide {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  } /* off-screen left */
+  50% {
+    transform: translate3d(0%, 0, 0);
+  } /* fully covering */
+  100% {
+    transform: translate3d(100%, 0, 0);
+  } /* off-screen right */
+}
+
+/* ===============================
+   Footer helper (if you use the decorative grid panel)
+   =============================== */
+.diagonal-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-size:
+    28px 28px,
+    28px 28px;
+  mask-image: linear-gradient(to left, black 65%, transparent 100%);
+}

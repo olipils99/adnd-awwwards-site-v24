@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 
 const team = [
-  { name: "Alexandre Dupont", role: "Fondateur & PDG", img: "/team/ceo.jpg", bio: "20 ans d’expérience en aménagement résidentiel et commercial." },
-  { name: "Nadia Tremblay", role: "Architecte paysagiste", img: "/team/nadia.jpg", bio: "Design 3D, sélections de plantes, écoresponsabilité." },
-  { name: "Hugo Gagnon", role: "Chef de chantier", img: "/team/hugo.jpg", bio: "Gestion terrain, sécurité et qualité d’exécution." },
-  { name: "Mélissa Caron", role: "Conseillère clientèle", img: "/team/melissa.jpg", bio: "Coordination, soumissions et suivi de satisfaction." },
+  { name: "Nathan Dassylva", role: "Fondateur & PDG", img: "https://via.placeholder.com/400x300/10b981/ffffff?text=Nathan+Dassylva", bio: "20 ans d'expérience en aménagement résidentiel et commercial." },
+  { name: "Alexis Daigneault", role: "Architecte paysagiste", img: "https://via.placeholder.com/400x300/059669/ffffff?text=Alexis+Daigneault", bio: "Design 3D, sélections de plantes, écoresponsabilité." },
+  { name: "Équipe ADND", role: "Notre équipe complète", img: "/team/melissa.jpg", bio: "Une équipe passionnée et experte qui transforme vos espaces extérieurs." },
 ];
 
 export default function Team(){

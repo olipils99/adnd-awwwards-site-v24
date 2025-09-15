@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="258.66666"
+   height="236"
+   viewBox="0 0 258.66666 236"
+   sodipodi:docname="logo-kotra.png"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   inkscape:dataloss="true"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1372027"
+     inkscape:cx="214.1219"
+     inkscape:cy="177.18917"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="258.66666"
+       height="236"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1">
+    <g
+       id="g2"
+       transform="translate(-2.6380504)">
+      <path
+         style="fill:#3983dc;fill-opacity:1"
+         d="m 101.04166,76.636215 51.14263,64.666665 0.15545,4.04167 -40.57212,53.6298 28.44712,37.30769 H 258.51121 L 173.48076,122.33814 173.32531,120.3173 260.99839,1.8653845 154.82692,1.5544871 Z"
+         id="path1" />
+      <rect
+         style="fill:#3983dc;fill-opacity:1"
+         id="rect1"
+         width="97.31089"
+         height="234.10576"
+         x="0.62179482"
+         y="1.5544871" />
+    </g>
+  </g>
+</svg>

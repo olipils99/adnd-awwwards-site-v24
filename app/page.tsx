@@ -6,13 +6,13 @@ import ParallaxSection from "../components/ParallaxSection";
 import ServiceCards from "../components/ServiceCards";
 import Projects from "../components/Projects";
 import Testimonials from "../components/Testimonials";
-import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import SocialsBar from "../components/SocialsBar";
 
 export default function Page() {
   return (
     <main>
-            <Hero />
+      <Hero />
       <BloomSection />
       <GrowthStory />
       <EcoDesign />
@@ -21,7 +21,7 @@ export default function Page() {
       <ServiceCards />
       <Projects />
       <Testimonials />
-      <CTA />
+      <SocialsBar />
       <Footer />
     </main>
   );

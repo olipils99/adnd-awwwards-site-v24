@@ -1,117 +1,60 @@
+// app/components/DesignPerformance.tsx
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import Reveal from "./Reveal";
 
-const FLOWERS = [
-  "/flowers/leaf-1.svg",
-  "/flowers/flower-1.svg",
-  "/flowers/leaf-2.svg",
-  "/flowers/flower-2.svg",
-  "/flowers/leaf-3.svg",
-];
-
-export default function EcoDesign() {
+export default function DesignPerformance() {
   return (
-    <section className="relative overflow-hidden bg-[#011700]">
-      <div className="mx-auto max-w-7xl px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <Reveal>
-            <div className="text-sm uppercase tracking-wider text-brand-700">
-              Design & performance écologique
-            </div>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <h2 className="text-3xl md:text-5xl font-semibold text-white mt-2">
-              Beau, durable, facile à vivre
-            </h2>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <p className="text-gray-400 mt-3 max-w-xl">
-              Nous sélectionnons des matériaux durables, optimisons l’arrosage
-              et favorisons la biodiversité. Un extérieur pensé pour les
-              familles, avec un entretien simple.
-            </p>
-          </Reveal>
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <Reveal delay={0.18}>
-              <div className="card p-4">
-                <div className="font-medium">Gestion de l’eau</div>
-                <p className="text-sm text-gray-600">
-                  Dalles perméables, drainage discret.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <div className="card p-4">
-                <div className="font-medium">Sélection végétale</div>
-                <p className="text-sm text-gray-600">
-                  Essences adaptées et rustiques.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <div className="card p-4">
-                <div className="font-medium">Matériaux locaux</div>
-                <p className="text-sm text-gray-600">
-                  Empreinte réduite, look naturel.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.36}>
-              <div className="card p-4">
-                <div className="font-medium">Éclairage efficient</div>
-                <p className="text-sm text-gray-600">
-                  LEDs basse conso, ambiances douces.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+    <section className="relative bg-[#0b2a0f] text-white py-10 md:py-16">
+      <div className="max-w-7xl mx-auto px-4">
+        <p className="text-[12px] md:text-sm tracking-widest text-emerald-300 font-semibold">
+          DESIGN & PERFORMANCE ÉCOLOGIQUE
+        </p>
 
-        <div className="relative h-[360px] md:h-[460px]">
-          <motion.div
-            className="absolute inset-0"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={{
-              hidden: { opacity: 1 },
-              show: {
-                opacity: 1,
-                transition: { staggerChildren: 0.25, delayChildren: 0.1 },
-              },
-            }}
-          >
-            {FLOWERS.map((src, i) => (
-              <motion.div
-                key={src}
-                className="absolute drop-shadow-lg"
-                initial={{ opacity: 0, scale: 0.85, y: 24 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 18,
-                  delay: i * 0.2,
-                }}
-                style={{
-                  top: `${10 + ((i * 14) % 70)}%`,
-                  left: `${((i * 22) % 70) + 10}%`,
-                }}
-              >
-                <Image
-                  src={src}
-                  alt=""
-                  width={160}
-                  height={160}
-                  className="w-[120px] md:w-[160px] h-auto select-none pointer-events-none"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+        <h2 className="mt-2 text-3xl md:text-5xl font-extrabold leading-tight">
+          Beau, pratique, durable
+        </h2>
+
+        <p className="mt-4 text-base md:text-lg text-white/80 max-w-3xl">
+          Nous créons des aménagements extérieurs fonctionnels et esthétiques.
+          Chez ADND, nous combinons durabilité, efficacité et confort pour
+          offrir des espaces agréables à vivre, simples à entretenir et adaptés
+          à vos besoins.
+        </p>
+
+        {/* Cards */}
+        <div className="mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          {[
+            {
+              title: "Entretien optimisé",
+              desc: "Services de tonte, taille et nettoyage réguliers.",
+            },
+            {
+              title: "Contrôles & entretien",
+              desc: "Plus de désherbage, plates-bandes nettes.",
+            },
+            {
+              title: "Ouverture & fermeture",
+              desc: "On prépare et protège votre terrain chaque saison.",
+            },
+            {
+              title: "Taillage de haies",
+              desc: "Haies propres, esthétiques et bien entretenues.",
+            },
+          ].map((c) => (
+            <motion.div
+              key={c.title}
+              whileHover={{ y: -2 }}
+              className="rounded-2xl bg-white text-slate-900 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/10"
+            >
+              <div className="p-5 md:p-6">
+                <h3 className="text-lg md:text-xl font-semibold">{c.title}</h3>
+                <p className="mt-1.5 text-sm md:text-base text-slate-600">
+                  {c.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
